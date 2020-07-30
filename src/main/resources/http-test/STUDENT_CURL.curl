@@ -1,0 +1,31 @@
+# 학생 정보 모듈 테스트를 위한 Curl 을 작성했다.
+
+### 학생 가입을 위한 테스트
+curl -i http://localhost:8081/students \
+-X POST \
+-H "Accept: application/json" \
+-H "Content-Type: application/json" \
+-d '{"name": "Mario", "age":33, "major": "Math"}'
+
+### 전체 학생목록 조회
+curl -i http://localhost:8081/students
+
+### 아이디를 통한 학생 조회
+curl -i http://localhost:8081/students/1
+
+### 전공과목과 매치되는 학생 목록 조회
+curl -i http://localhost:8081/students/subjects/Math
+
+### 학생 정보 수정
+curl -i http://localhost:8081/students/4 \
+-X PUT  \
+-H "Accept: application/json" \
+-H "Content-Type: application/json" \
+-d '{"name": "Cart", "major":  "Machine Learning"}'
+
+### 수정 된 정보 확인하기
+curl -i http://localhost:8081/students/4
+
+### 아이디로 학생정보 삭제하기
+curl -i http://localhost:8081/students/4
+-X DELETE

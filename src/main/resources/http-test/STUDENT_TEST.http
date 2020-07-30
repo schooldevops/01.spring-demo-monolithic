@@ -1,0 +1,51 @@
+# 학생 정보 모듈 테스트를 위한 HTTP-CLIENT Plugin 을 아래와 같이 작성해서 테스트 할 수 있다.
+# 참고로 curl 도 함께 작성하였다.
+
+### 학생 가입을 위한 테스트
+POST http://localhost:8081/students
+Content-Type: application/json
+
+{"name": "Mario", "major": "Math"}
+
+### 혹은 Curl을 다음과 같이 실행하자.
+### curl -i http://localhost:8081/students -X POST -H "Accept: application/json" -H "Content-Type: application/json" -d '{"name": "Mario", "age":33, "major": "Math"}'
+
+### findAll
+GET http://localhost:8081/students
+
+### 혹은 Curl을 다음과 같이 실행하자.
+### curl -i http://localhost:8081/students
+
+### findById
+GET http://localhost:8081/students/1
+
+### 혹은 Curl을 다음과 같이 실행하자.
+### curl -i http://localhost:8081/students/1
+
+### findByMajor
+GET http://localhost:8081/students/subjects/Math
+
+### 혹은 Curl을 다음과 같이 실행하자.
+### curl -i http://localhost:8081/students/subjects/Math
+
+### modify
+PUT http://localhost:8081/students/4
+Content-Type: application/json
+
+{"name": "Cart", "major":  "Machine Learning"}
+
+### 혹은 Curl을 다음과 같이 실행하자.
+### curl -i http://localhost:8081/students/4 -X PUT  -H "Accept: application/json" -H "Content-Type: application/json" -d '{"name": "Cart", "major":  "Machine Learning"}'
+
+### validation modification
+GET http://localhost:8081/students/4
+
+### 혹은 Curl을 다음과 같이 실행하자.
+### curl -i http://localhost:8081/students/4
+
+### delete
+DELETE http://localhost:8081/students/4
+
+
+### 혹은 Curl을 다음과 같이 실행하자.
+### curl -i http://localhost:8081/students/4 -X DELETE
